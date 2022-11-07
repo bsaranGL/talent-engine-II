@@ -1,2 +1,9 @@
 # Talent Engine II training
-- test repo
+
+## How to run tests
+
+## Framework structure
+
+## Folder structure
+
+### Test data location
