@@ -21,6 +21,9 @@ class Config:
         self._register("dict_data")
         self._register("set_data")
         self._register("test_data") # env variable!
+        self._register("user_fname")
+        self._register("user_lname")
+        
     
     def __getitem__(self, item_name: str) -> Any:
         """Overloaded __getitem__ method to retrieve specific data from conf_dict.

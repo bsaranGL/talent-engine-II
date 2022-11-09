@@ -59,3 +59,10 @@ def test_env_var_t(basic_types_data):
 @pytest.mark.xfail    
 def test_env_var_f(basic_types_data):
     assert basic_types_data['test_data'] == "Hello"
+    
+def test_user_t(user_model_fixture):
+    assert user_model_fixture.get_login() == "bsaran"
+    
+@pytest.mark.xfail
+def test_user_f(user_model_fixture):
+    assert user_model_fixture.get_login() == "jdoe"
