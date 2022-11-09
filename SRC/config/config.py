@@ -1,20 +1,18 @@
-from typing import Any
+from typing import Any, List
 
 class Config:
-    """_summary_
+    """Class for loading config data in hierarchical order from multiple config providers.
+
     """
-    def __init__(self, config_providers: list) -> None:
-        """
-        Create a list of config providers
-        Create a conf_dict to store data from config providers
-        Add data to conf_dict using _register method
+    def __init__(self, config_providers: List) -> None:
+        """Load a list of config providers. Add specified data from config providers using _register() method and add them to conf_dict.
 
         Args:
-            config_providers (list): List of config providers
+            config_providers (List): List of config providers which are subclasses of BaseProvider class.
         """
-        self._config_providers = config_providers
+        self.config_providers = config_providers
         
-        self._conf_dict = {}
+        self.conf_dict = {}
         self._register("str_data")
         self._register("int_data")
         self._register("float_data")
@@ -22,32 +20,31 @@ class Config:
         self._register("tuple_data")
         self._register("dict_data")
         self._register("set_data")
+        self._register("test_data") # env variable!
     
-    def get(self, item_name: str) -> Any:
-        """Return a specified value from conf_dict
-            Raises key error if item_name was not found
+    def __getitem__(self, item_name: str) -> Any:
+        """Overloaded __getitem__ method to retrieve specific data from conf_dict.
 
         Args:
-            item_name (str): name of the key from conf_dict
+            item_name (str): Name of value to get from conf_dict
 
         Returns:
-            Any: Value of item_name key in conf_dict
-            None: If item was not found
+            Any: Any data type stored under the specific key in conf_dict
         """
-        try:
-            return self._conf_dict[item_name]
-        except KeyError:
-            print("Requested value is not present.")
-            return None
+        return self.conf_dict[item_name]
     
     def _register(self, item_name: str) -> None:
-        """Add specified value to conf_dict
+        """Get specific item from config providers and add it to conf_dict. Raises KeyError if it is not found in any provider.
 
         Args:
-            item_name (str): Value of item_name to be added to conf_dict
+            item_name (str): Name of the value to get from providers.
+
+        Raises:
+            KeyError: Raised if specified item is not found in any provider.
         """
-        for provider in self._config_providers:
-            value = provider.get(item_name)
-            if value:
-                self._conf_dict[item_name] = value
-    
+        for provider in self.config_providers:
+            value = provider[item_name]
+            if value is not None:
+                self.conf_dict[item_name] = value
+                return
+        raise KeyError(f"Specified key has not been found: {item_name}")
