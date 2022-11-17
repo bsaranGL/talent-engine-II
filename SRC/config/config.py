@@ -22,7 +22,10 @@ class Config:
         self._register("set_data")
         self._register("user_fname")
         self._register("user_lname")
+        self._register("gh_username")
         self._register("ghtoken")
+        self._register("gh_repo")
+        self._register("gh_rec_header")
         
     
     def __getitem__(self, item_name: str) -> Any:
