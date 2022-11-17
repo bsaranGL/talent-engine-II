@@ -5,5 +5,7 @@
     "list_data" : ["one", "two", "three", 4, 5, 7],
     "tuple_data" : [1, 2, 3],
     "dict_data" : {"a" : 1, "b": 2, "c" : 3},
-    "set_data" : [10, 11, 12]
+    "set_data" : [10, 11, 12],
+    "user_fname" : "Bartłomiej",
+    "user_lname" : "Saran"
 }
