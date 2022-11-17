@@ -22,6 +22,7 @@ class Config:
         self._register("set_data")
         self._register("user_fname")
         self._register("user_lname")
+        self._register("ghtoken")
         
     
     def __getitem__(self, item_name: str) -> Any:

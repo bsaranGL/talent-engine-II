@@ -1,5 +1,5 @@
 from os import environ
-from SRC.providers.baseprovider import BaseProvider
+from src.providers.baseprovider import BaseProvider
 
 class OSConfigProvider(BaseProvider):
     """Provider class for getting data from system environment variables.
