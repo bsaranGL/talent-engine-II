@@ -52,9 +52,6 @@ def test_set_t(basic_types_data):
 def test_set_f(basic_types_data):
     s = set(basic_types_data['set_data'])
     assert type(s) == str
-    
-def test_env_var_t(basic_types_data):
-    assert basic_types_data['test_data'] == "OS TEST DATA"
 
 @pytest.mark.xfail    
 def test_env_var_f(basic_types_data):
