@@ -20,7 +20,6 @@ class Config:
         self._register("tuple_data")
         self._register("dict_data")
         self._register("set_data")
-        self._register("test_data") # env variable!
         self._register("user_fname")
         self._register("user_lname")
         
