@@ -1,9 +1,9 @@
 import pytest
-import SRC.providers.jsonconfigprovider as jcp
-import SRC.providers.osconfigprovider as ocp
-from SRC.providers.providerconstants import CONF_PATH
-from SRC.config import config
-from SRC.models import usermodel
+import src.providers.jsonconfigprovider as jcp
+import src.providers.osconfigprovider as ocp
+from src.providers.providerconstants import CONF_PATH
+from src.config import config
+from src.models import usermodel
 
 @pytest.fixture
 def basic_types_data(scope='session'):

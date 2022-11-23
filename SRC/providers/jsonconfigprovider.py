@@ -1,6 +1,6 @@
 from json import load
 from typing import Any
-from SRC.providers.baseprovider import BaseProvider
+from src.providers.baseprovider import BaseProvider
 
 class JSONConfigProvider(BaseProvider):
     """Provider class for getting data from JSON files. __init__ and __getitem__ methods need to be overloaded or they will raise NotImplementedError
